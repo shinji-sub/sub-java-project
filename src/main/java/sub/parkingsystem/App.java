@@ -8,6 +8,5 @@ public class App {
         System.out.println("주차 관리 시스템에 오신걸 환영합니다!");
         System.out.println("111");
         System.out.println("222");
-        System.out.println("333");
     }
 }
