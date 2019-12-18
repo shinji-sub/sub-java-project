@@ -1,4 +1,4 @@
-package sub.parkingsystem;
+package sub;
 
 import java.sql.Date;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class Ex1 {
    
     
     System.out.print("차량번호?: ");
-    String CarNumber = keyboard.next(\);
+    String CarNumber = keyboard.next();
 
     System.out.print("차량 위치?: ");
     String parking = keyboard.next();
