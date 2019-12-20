@@ -1,4 +1,7 @@
+###v002폴더###
+
 # 004 - 변수와 키보드 입력 다루기
+
 
 ## 학습 목표
 
@@ -7,9 +10,9 @@
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/Ex01.java 변경
-- src/main/java/com/eomcs/lms/Ex02.java 변경
-- src/main/java/com/eomcs/lms/Ex03.java 변경
+- git\sub-java-project\v004 Ex01.java 변경
+- git\sub-java-project\v004 Ex02.java 변경
+- git\sub-java-project\v004 Ex03.java 변경
 
 ## 실습
 

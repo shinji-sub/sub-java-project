@@ -47,9 +47,3 @@ App3.java 실행 결과
 작성일: 2019-01-01
 조회수: 0
 ```
-
-### 작업4) AppTest 클래스를 삭제하라.
-
-```
-src/test/java/com/eomcs/lms/AppTest.java 삭제
-```

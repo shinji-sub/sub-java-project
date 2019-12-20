@@ -1,3 +1,5 @@
+###v003폴더###
+
 # 005 - 배열과 흐름 제어문 활용하기
 
 ## 학습 목표
@@ -7,9 +9,9 @@
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/Ex.java 변경
-- src/main/java/com/eomcs/lms/Ex1.java 변경
-- src/main/java/com/eomcs/lms/Ex2.java 변경
+- src/main/java/sub/Ex 1java 변경
+- src/main/java/sub/Ex 2.java 변경
+- src/main/java/sub/Ex 3.java 변경
 
 ## 실습
 

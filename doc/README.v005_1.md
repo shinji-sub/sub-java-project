@@ -1,3 +1,5 @@
+###v004폴더###
+
 # 005 _1 class 문 사용하여 묶기
 
 ## 학습 목표
@@ -7,9 +9,9 @@
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/Ex.java 변경
-- src/main/java/com/eomcs/lms/Ex1.java 변경
-- src/main/java/com/eomcs/lms/Ex2.java 변경
+- src/main/java/sub/Ex1.java 변경
+- src/main/java/sub/Ex2.java 변경
+- src/main/java/sub/Ex3.java 변경
 
 ## 실습
 
@@ -115,7 +117,7 @@ Ex1.java 실행 결과
 
 ### 작업3) 여러 개의 게시글을 입력 받아 출력하라.
 
-App3.java 실행 결과
+Ex3.java 실행 결과
 
 목록으로 출력할 항목은 `번호,내용,작성일,조회수`이다.
 
