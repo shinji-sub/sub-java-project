@@ -1,27 +1,19 @@
-package sub;
+package sub.handler;
 
 import java.util.Scanner;
+import sub.domain.Customer;
 
 public class CustomerHandler {
-  static class Customer {
-    int no;
-    String Cartype;
-    String CarNumbel;
-    String photo;
-    String DiscountRatr;
-    String Payment;
-    String GyeoljeYuhyeong;
-    String parking;
-    String ExitStatus;
-    String acceptance;
-  }
+  
   static  final int CUSTOMER_SIZE = 100;
   static  Customer[] customers = new Customer[CUSTOMER_SIZE]; 
   static  int customerCount = 0;
-  static Scanner keyboard;
 
 
-  static void addCustomer() {
+  public static Scanner keyboard;
+
+
+  public static void addCustomer() {
     Customer customer = new Customer();
 
 
@@ -63,7 +55,7 @@ public class CustomerHandler {
 
   }
 
-  static void listCustomer(){
+  public static void listCustomer(){
     for (int i = 0; i < customerCount; i++) {
       Customer m = customers[i];
       System.out.printf("번호:%s, 차종:%s\n차량 번호 :%s, 사진:%s\n할인율:%s, 결제금액:%s\n결제유형:%s, "
