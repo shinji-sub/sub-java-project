@@ -38,9 +38,9 @@
 
 ### 작업2) 핸들러의 스태틱 멤버를 인스턴스 필드와 인스턴스 메서드로 전환하라.
 
-- LessonHandler.java
+- CustomerHandler.java
     - 필드와 메서드를 인스턴스 멤버로 전환한다.
-- MemberHandler.java    
+- CarinforHandler.java    
     - 필드와 메서드를 인스턴스 멤버로 전환한다.
-- App.java
+- Ex.java
     - `LessonHandler`와 `MemberHandler` 클래스의 변화에 맞추어 코드를 변경한다.
