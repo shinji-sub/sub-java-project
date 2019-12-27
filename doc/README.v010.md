@@ -9,6 +9,10 @@
 ## 실습 소스 및 결과
 
 - src/main/java/sub/handler/BoardHandler2.java 추가
+  src/main/java/sub/handler/BoardHandler3.java 추가
+  src/main/java/sub/handler/BoardHandler4.java 추가
+  src/main/java/sub/handler/BoardHandler5.java 추가
+  src/main/java/sub/handler/BoardHandler6.java 추가
 - src/main/java/sub//Ex1.java 변경
 
 ## 실습

@@ -6,17 +6,18 @@ import sub.domain.Board;
 
 
 public class BoardHandler {
-  
 
+
+
+  Board[] boards = new Board[BOARD_SIZE];
+  int boardCount = 0;
 
   static final int BOARD_SIZE = 100;
-  static Board[] boards = new Board[BOARD_SIZE];
-  static int boardCount = 0;
   public static Scanner keyboard;
 
 
 
-  public static void addBoard() {
+  public void addBoard() {
     Board board = new Board();
 
     System.out.print("번호? ");
@@ -29,30 +30,30 @@ public class BoardHandler {
     board.date = new Date(System.currentTimeMillis());
     board.viewCount = 0;
 
-    boards[boardCount++] = board;
+    this.boards[this.boardCount++] = board;
     System.out.println("저장하였습니다.");
 
   }
-  public static void listBoard() {
-    for (int i = 0; i < boardCount; i++) {
-      Board b = boards[i];
+  public void listBoard() {
+    for (int i = 0; i < this.boardCount; i++) {
+      Board b = this.boards[i];
       System.out.printf("%d, %s, %s, %d\n",
           b.no, b.title, b.date, b.viewCount);
     }
 
   }
 
-  public static void detailBoard() {
+  public void detailBoard() {
     System.out.print("게시물 번호? ");
     int no = keyboard.nextInt();
     keyboard.nextLine();
-    
+
     Board board = null;
-        for(int i = 0; i < boardCount; i++) { 
-          if (boards[i].no == no) {
-            board = boards[i];
-          }
-        }
+    for(int i = 0; i < this.boardCount; i++) { 
+      if (this.boards[i].no == no) {
+        board = this.boards[i];
+      }
+    }
     if (board == null) {
       System.out.println("게시물이 번호가 유효하지 않습니다.");
       return;
