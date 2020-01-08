@@ -11,7 +11,7 @@
 
 - src/main/java/sub/util/ArrayList.java 변경
 - src/main/java/sub/handler/BoardList.java 변경
-- src/main/java/sub/handler/CarinfirHandler.java 변경
+- src/main/java/sub/handler/CarinforHandler.java 변경
 - src/main/java/sub/handler/CustomerHandler.java 변경
 
 ## 실습
