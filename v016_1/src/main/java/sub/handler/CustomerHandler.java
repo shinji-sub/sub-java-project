@@ -108,7 +108,7 @@ public class CustomerHandler {
     Customer oldCustomer = this.customerlist.get(index);
 
     if (oldCustomer == null) {
-      System.out.println("해당 고객 정보를 찾을수 없습니다.");
+      System.out.println("게시판 인덱스가 유효하지 않습니다.");
       return;
     }
     boolean changed = false;
@@ -214,10 +214,10 @@ public class CustomerHandler {
     Customer customer = this.customerlist.get(index);
     
     if (customer == null) {
-      System.out.println("해당 고객 정보를 찾을수 없습니다.");
+      System.out.println("해당 게시글 정보를 찾을 수 없습니다.");
       return;
     }
     this.customerlist.remove(index);
-  System.out.println("고객 정보를 삭제했습니다.");
+  System.out.println("게시글 정보를 삭제했습니다.");
   }
 }

@@ -72,7 +72,7 @@ public class CarinforHandler {
     Carinfor carinfor = this.carinforList.get(index);
 
     if (carinfor == null) {
-      System.out.println("자동차 정보 게시판 정보가 유효하지 않습니다.");
+      System.out.println("게시글 인덱스가 유효하지 않습니다.");
       return;
     }
 
@@ -92,7 +92,7 @@ public class CarinforHandler {
     Carinfor oldCarinfor = this.carinforList.get(index);
 
     if (oldCarinfor == null) {
-      System.out.println("자동차 정보 게시판 정보가 유효하지 않습니다. ");
+      System.out.println("게시판 인덱스가 유효하지 않습니다. ");
       return;
     }
     boolean changed = false;
@@ -110,7 +110,7 @@ public class CarinforHandler {
       changed = true;
     }
 
-    System.out.printf("차량 번호(%s)? ",oldCarinfor.getCarNumber());
+    System.out.printf("차량 번호(%s)? ",oldCarinfor.getCarType());
     inputStr = input.nextLine();
     if (inputStr.length() == 0) {
       newCarinfor.setCarNumber(oldCarinfor.getCarNumber());
@@ -164,7 +164,7 @@ public class CarinforHandler {
     }
     this.carinforList.remove(index);
 
-    System.out.println("자동차 정보 게시판 정보를 삭제하였습니다.");
+    System.out.println("게시글 정보를 삭제했습니다.");
   }
 }
 
