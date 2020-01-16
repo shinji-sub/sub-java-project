@@ -13,7 +13,7 @@
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/util/AbstractList.java 변경(List.java의 이름 변경)
+- src/main/java/sub/util/AbstractList.java 변경(List.java의 이름 변경)
 
 
 ## 실습

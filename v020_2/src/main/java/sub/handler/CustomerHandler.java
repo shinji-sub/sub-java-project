@@ -95,9 +95,9 @@ public class CustomerHandler {
         String.format("사진(%s)? ", oldCustomer.getPhoto()),
         oldCustomer.getPhoto()));
 
-    newCustomer.setExitStatus(prompt.inputString(
+    newCustomer.setDiscountRatr(prompt.inputString(
         String.format("할인율(%s)?", oldCustomer.getDiscountRatr()),
-        oldCustomer.getExitStatus()));
+        oldCustomer.getDiscountRatr()));
 
     newCustomer.setPayment(prompt.inputString(
         String.format("결제 금액(%s)? ", oldCustomer.getPayment()),
