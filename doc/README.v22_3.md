@@ -26,12 +26,12 @@
   
 ### 훈련2. QueueIterator 클래스를 Queue 클래스의 중첩클래스로 만들라
 
-- QueueIterator.java 
+- Queue.java 
   - QueueIterator 논스태틱 중첩 클래스로 변경하라
   - interator() 메서드를 변경한다.
   
 ### 훈련3. StackIterator 클래스를 Steak 클래스의 중첩클래스로 만들라
 
-- StackIterator
+- Stack
   - StakcIterator 논스태틱 중첩 클래스로 변경하라
   - interator() 메서드를 변경한다.
