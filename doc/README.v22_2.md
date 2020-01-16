@@ -2,7 +2,7 @@
 
 // 
 
-# 022 `Iterator` 구현체와 중첩 클레스(nested class)
+# 022_2 `Iterator` 구현체와 중첩 클레스(nested class)
 
 ## 학습 목표
 
