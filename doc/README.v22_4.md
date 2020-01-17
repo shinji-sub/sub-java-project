@@ -1,8 +1,8 @@
-###021_4 src ###
+###021_5 src ###
 
 // 
 
-# 022_4 `Iterator` 구현체와 로컬 클래스 (local class)
+# 022_5 `Iterator` 구현체와 익명 클래스 (local class)
 
 ## 학습 목표
 
