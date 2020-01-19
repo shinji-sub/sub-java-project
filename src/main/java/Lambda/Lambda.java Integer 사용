@@ -1,0 +1,14 @@
+package Lambda;
+
+import java.util.function.Function;
+
+public class Lambda {
+  public static void main(final String[] args) {
+    // 함수형 인터페이스
+   Function<Integer, Integer> f = (a) -> a * a * a;
+    System.out.println(f.apply(3));
+  }
+
+}
+
+
