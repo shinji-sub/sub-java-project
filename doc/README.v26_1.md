@@ -4,7 +4,7 @@
 
 ## 실습 소스 및 결과
  
-- src/mian/java/sub/Ex1.java 변경
+- src/main/java/sub/Ex1.java 변경
 
 
 ## 실습

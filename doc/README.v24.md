@@ -22,7 +22,7 @@
 - src/main/java/sub/handler/CustomerDetailCommand.java 추가
 - src/main/java/sub/handler/CustomerDeleteCommand.java 추가
 - src/main/java/sub/handler/CustomerUpdateCommand.java 추가
-- src/mian/java/sub/Ex1.java 변경
+- src/main/java/sub/Ex1.java 변경
 
 
 ## 실습

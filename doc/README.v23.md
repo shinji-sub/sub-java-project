@@ -17,8 +17,8 @@
 - src/main/java/sub/util/Ineratir.java 삭제
 - src/main/java/sub/util/Stack.java 삭제
 - src/main/java/sub/util/Queue.java 삭제
-- src/mian/java/sub/handler/BoardHandler.java 변경
-- src/mian/java/sub/handler/CarinforHandler.java 변경
+- src/main/java/sub/handler/BoardHandler.java 변경
+- src/main/java/sub/handler/CarinforHandler.java 변경
 - src/mian/java/sub/handler/CustomerHandler.java 변경
 - src/mian/java/sub/Ex1.java 변경
 ## 실습
