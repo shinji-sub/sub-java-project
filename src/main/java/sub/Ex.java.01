@@ -12,14 +12,11 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Set;
-import sub.context.ApplicationContextListener;
 import sub.domain.Board;
 import sub.domain.Carinfor;
 import sub.domain.Customer;
@@ -53,31 +50,7 @@ public class Ex1 {
   List<Board> boardList = new ArrayList<>();
   List<Customer> customerList = new ArrayList<>();
 
-  Set<ApplicationContextListener> listeners = new HashSet<>();
-
-  public void addApplicationContextListener(ApplicationContextListener listener) {
-    listeners.add(listener);
-  }
-
-  public void removeApplivationContextListener(ApplicationContextListener listener) {
-    listeners.remove(listener);
-  }
-
-  private void notifyApplicationInitialized() {
-    for (ApplicationContextListener listener : listeners) {
-      listener.contextInitialized();
-    }
-  }
-
-  private void notifyApplicationDestroyed() {
-    for (ApplicationContextListener listener : listeners) {
-      listener.contextDestroyed();
-    }
-  }
-
   public void service() {
-
-    notifyApplicationInitialized();
 
     loadCarinforData();
     loadCustomerData();
@@ -137,7 +110,6 @@ public class Ex1 {
         try {
           commandHandler.execute();
         } catch (Exception e) {
-          e.printStackTrace();
           System.out.printf("명령어 실행 중 오류발생 : %s\n", e.getMessage());
         }
       } else {
@@ -152,8 +124,6 @@ public class Ex1 {
     saveCarinforData();
     saveCustomerData();
     saveBoardData();
-
-    notifyApplicationDestroyed();
   }
 
   private void printCommandHistory(Iterator<String> iterator) {
@@ -262,7 +232,6 @@ public class Ex1 {
   }
 
   public static void main(String[] args) {
-    Ex1 ex1 = new Ex1();
-    ex1.service();
+
   }
 }
