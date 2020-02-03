@@ -166,7 +166,7 @@ public class Ex1 {
     Ex1 ex1 = new Ex1();
 
     ex1.addApplicationContextListener(new DataLoaderListener());
-
+    ex1.addApplicationContextListener(new GreetinListener());
     ex1.service();
   }
 }

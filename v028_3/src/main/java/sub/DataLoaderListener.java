@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import sub.context.ApplicationContextListener;
 import sub.domain.Board;
 import sub.domain.Carinfor;
@@ -21,18 +22,22 @@ public class DataLoaderListener implements ApplicationContextListener {
   List<Board> boardList = new ArrayList<>();
   List<Customer> customerList = new ArrayList<>();
 
+
   @Override
-  public void contextInitialized() {
+  public void contextInitialized(Map<String, Object> context) {
     System.out.println("데이터를 로딩합니다.");
 
     loadCarinforData();
     loadCustomerData();
     loadBoardData();
 
+    context.put("carinforList", carinforList);
+    context.put("boardList", boardList);
+    context.put("customerList", customerList);
   }
 
   @Override
-  public void contextDestroyed() {
+  public void contextDestroyed(Map<String, Object> context) {
     System.out.println("데이터를 저장합니다.");
 
     saveCarinforData();
