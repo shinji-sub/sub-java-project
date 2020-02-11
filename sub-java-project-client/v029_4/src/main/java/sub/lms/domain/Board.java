@@ -15,12 +15,6 @@ public class Board implements Serializable {
   private String writer;
 
 
-  @Override
-  public String toString() {
-    return "Board [no=" + no + ", title=" + title + ", date=" + date + ", viewCount=" + viewCount
-        + ", writer=" + writer + "]";
-  }
-
   public static Board valueOf(String csv) {
     String[] data = csv.split(",");
 

@@ -22,14 +22,6 @@ public class Customer implements Serializable {
   private String acceptance;
 
 
-  @Override
-  public String toString() {
-    return "Customer [no=" + no + ", Cartype=" + Cartype + ", CarNumbel=" + CarNumbel + ", photo="
-        + photo + ", DiscountRatr=" + DiscountRatr + ", Payment=" + Payment + ", GyeoljeYuhyeong="
-        + GyeoljeYuhyeong + ", parking=" + parking + ", ExitStatus=" + ExitStatus + ", acceptance="
-        + acceptance + "]";
-  }
-
   public static Customer valuOf(String csv) {
     String[] data = csv.split(",");
 

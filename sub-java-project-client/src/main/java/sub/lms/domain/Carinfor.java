@@ -16,13 +16,6 @@ public class Carinfor implements Serializable {
   private Date Datas;
   private Date Departure;
 
-
-  @Override
-  public String toString() {
-    return "Carinfor [no=" + no + ", CarType=" + CarType + ", CarNumber=" + CarNumber + ", parking="
-        + parking + ", Datas=" + Datas + ", Departure=" + Departure + "]";
-  }
-
   public static Carinfor valuOf(String csv) {
     String[] data = csv.split(",");
 
