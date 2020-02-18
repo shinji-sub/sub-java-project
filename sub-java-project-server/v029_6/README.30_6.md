@@ -1,3 +1,5 @@
+### sub-project-server 29_6 src ###
+
 # 30_6 - 커맨드 패턴을 적용하여 요청 처리 메서드를 객체화 하기
 
 ## 학습목표
@@ -30,8 +32,8 @@
 
 ### 훈련 1: 커맨드 패턴의 인터페이스 정의.
 
-- com.eomcs.servlet 패키지 생성한다.
-- com.eomcs.servlet.Servlet 인터페이스를 정의한다.
+- sub.servlet 패키지 생성한다.
+- sub.servlet.Servlet 인터페이스를 정의한다.
 
 ### 훈련 2: 각각의 요청 처리 메서드를 인터페이스 규칙에 따라 클래스로 정의하라
 
