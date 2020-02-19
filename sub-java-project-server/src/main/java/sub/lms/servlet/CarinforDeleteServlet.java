@@ -2,13 +2,13 @@ package sub.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import sub.lms.dao.CarinforObjectFileDao;
+import sub.lms.dao.json.CarinforJsonFileDao;
 
 public class CarinforDeleteServlet implements Servlet {
 
-  CarinforObjectFileDao carinforDao;
+  CarinforJsonFileDao carinforDao;
 
-  public CarinforDeleteServlet(CarinforObjectFileDao carinforDao) {
+  public CarinforDeleteServlet(CarinforJsonFileDao carinforDao) {
     this.carinforDao = carinforDao;
   }
 

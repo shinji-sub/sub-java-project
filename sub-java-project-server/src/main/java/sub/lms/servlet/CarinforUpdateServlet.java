@@ -2,14 +2,14 @@ package sub.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import sub.lms.dao.CarinforObjectFileDao;
+import sub.lms.dao.json.CarinforJsonFileDao;
 import sub.lms.domain.Carinfor;
 
 public class CarinforUpdateServlet implements Servlet {
 
-  CarinforObjectFileDao carinforDao;
+  CarinforJsonFileDao carinforDao;
 
-  public CarinforUpdateServlet(CarinforObjectFileDao carinforDao) {
+  public CarinforUpdateServlet(CarinforJsonFileDao carinforDao) {
     this.carinforDao = carinforDao;
   }
 

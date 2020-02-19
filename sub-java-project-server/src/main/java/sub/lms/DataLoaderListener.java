@@ -2,9 +2,9 @@ package sub.lms;
 
 import java.util.Map;
 import sub.lms.context.ApplicationContextListener;
-import sub.lms.dao.BoardObjectFileDao;
-import sub.lms.dao.CarinforObjectFileDao;
-import sub.lms.dao.CustomerObjectFileDao;
+import sub.lms.dao.json.BoardJsonFileDao;
+import sub.lms.dao.json.CarinforJsonFileDao;
+import sub.lms.dao.json.CustomerJsonFileDao;
 
 public class DataLoaderListener implements ApplicationContextListener {
 
@@ -13,9 +13,9 @@ public class DataLoaderListener implements ApplicationContextListener {
   public void contextInitialized(Map<String, Object> context) {
     System.out.println("데이터를 로딩합니다.");
 
-    BoardObjectFileDao boardDao = new BoardObjectFileDao("./board.ser2");
-    CarinforObjectFileDao carinforDao = new CarinforObjectFileDao("./carinfor.ser2");
-    CustomerObjectFileDao customerDao = new CustomerObjectFileDao("./customer.ser2");
+    BoardJsonFileDao boardDao = new BoardJsonFileDao("./board.json");
+    CarinforJsonFileDao carinforDao = new CarinforJsonFileDao("./carinfor.json");
+    CustomerJsonFileDao customerDao = new CustomerJsonFileDao("./customer.json");
 
 
     context.put("boardDao", boardDao);

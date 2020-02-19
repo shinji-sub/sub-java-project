@@ -10,9 +10,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import sub.lms.context.ApplicationContextListener;
-import sub.lms.dao.BoardObjectFileDao;
-import sub.lms.dao.CarinforObjectFileDao;
-import sub.lms.dao.CustomerObjectFileDao;
+import sub.lms.dao.json.BoardJsonFileDao;
+import sub.lms.dao.json.CarinforJsonFileDao;
+import sub.lms.dao.json.CustomerJsonFileDao;
 import sub.lms.servlet.BoardAddServlet;
 import sub.lms.servlet.BoardDeleteServlet;
 import sub.lms.servlet.BoardDetailServlet;
@@ -62,9 +62,9 @@ public class ServerApp {
 
     notifyApplicationInitialized();
 
-    BoardObjectFileDao boardDao = (BoardObjectFileDao) context.get("boardDao");
-    CustomerObjectFileDao customerDao = (CustomerObjectFileDao) context.get("customerDao");
-    CarinforObjectFileDao carinforDao = (CarinforObjectFileDao) context.get("carinforDao");
+    BoardJsonFileDao boardDao = (BoardJsonFileDao) context.get("boardDao");
+    CustomerJsonFileDao customerDao = (CustomerJsonFileDao) context.get("customerDao");
+    CarinforJsonFileDao carinforDao = (CarinforJsonFileDao) context.get("carinforDao");
 
     servletMap.put("/board/list", new BoardListServlet(boardDao));
     servletMap.put("/board/add", new BoardAddServlet(boardDao));
