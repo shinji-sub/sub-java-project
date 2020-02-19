@@ -1,4 +1,6 @@
-h# 30_8 - DAO 클래스의 공통점을 뽑아 수퍼 클래스로 정의하기(generalization 수행하기)
+### sub-project-server 29_8 src ###
+
+# 30_8 - DAO 클래스의 공통점을 뽑아 수퍼 클래스로 정의하기(generalization 수행하기)
 
 ## 학습목표
 
