@@ -2,13 +2,13 @@ package sub.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import sub.lms.dao.json.CarinforJsonFileDao;
+import sub.lms.dao.CarinforDao;
 
 public class CarinforDeleteServlet implements Servlet {
 
-  CarinforJsonFileDao carinforDao;
+  CarinforDao carinforDao;
 
-  public CarinforDeleteServlet(CarinforJsonFileDao carinforDao) {
+  public CarinforDeleteServlet(CarinforDao carinforDao) {
     this.carinforDao = carinforDao;
   }
 
@@ -22,7 +22,7 @@ public class CarinforDeleteServlet implements Servlet {
 
     } else {
       out.writeUTF("FAIL");
-      out.writeUTF("해당 번호의 고객정보가 없습니다.");
+      out.writeUTF("해당 번호의 차량 정보가 없습니다.");
     }
   }
 }

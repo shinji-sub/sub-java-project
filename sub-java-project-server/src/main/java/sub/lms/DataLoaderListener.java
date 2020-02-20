@@ -13,14 +13,9 @@ public class DataLoaderListener implements ApplicationContextListener {
   public void contextInitialized(Map<String, Object> context) {
     System.out.println("데이터를 로딩합니다.");
 
-    BoardJsonFileDao boardDao = new BoardJsonFileDao("./board.json");
-    CarinforJsonFileDao carinforDao = new CarinforJsonFileDao("./carinfor.json");
-    CustomerJsonFileDao customerDao = new CustomerJsonFileDao("./customer.json");
-
-
-    context.put("boardDao", boardDao);
-    context.put("carinforDao", carinforDao);
-    context.put("customerDao", customerDao);
+    context.put("boardDao", new BoardJsonFileDao("./board.json"));
+    context.put("carinforDao", new CarinforJsonFileDao("./carinfor.json"));
+    context.put("customerDao", new CustomerJsonFileDao("./customer.json"));
   }
 
   @Override

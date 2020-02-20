@@ -3,12 +3,13 @@ package sub.lms.dao;
 import java.util.List;
 import sub.lms.domain.Customer;
 
-public class CustomerObjectFileDao extends AbstractObjectFileDao<Customer> {
+public class CustomerObjectFileDao extends AbstractObjectFileDao<Customer> implements CustomerDao {
 
   public CustomerObjectFileDao(String filename) {
     super(filename);
   }
 
+  @Override
   public int insert(Customer customer) throws Exception {
 
     if (indexOf(customer.getNo()) > -1) {
@@ -19,10 +20,12 @@ public class CustomerObjectFileDao extends AbstractObjectFileDao<Customer> {
     return 1;
   }
 
+  @Override
   public List<Customer> findAll() throws Exception {
     return list;
   }
 
+  @Override
   public Customer findByNo(int no) throws Exception {
     int index = indexOf(no);
     if (index == -1) {
@@ -31,6 +34,7 @@ public class CustomerObjectFileDao extends AbstractObjectFileDao<Customer> {
     return list.get(index);
   }
 
+  @Override
   public int update(Customer customer) throws Exception {
     int index = indexOf(customer.getNo());
 
@@ -43,6 +47,7 @@ public class CustomerObjectFileDao extends AbstractObjectFileDao<Customer> {
     return 1;
   }
 
+  @Override
   public int delete(int no) throws Exception {
     int index = indexOf(no);
     if (index == -1) {

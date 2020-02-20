@@ -10,9 +10,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import sub.lms.context.ApplicationContextListener;
-import sub.lms.dao.json.BoardJsonFileDao;
-import sub.lms.dao.json.CarinforJsonFileDao;
-import sub.lms.dao.json.CustomerJsonFileDao;
+import sub.lms.dao.BoardDao;
+import sub.lms.dao.CarinforDao;
+import sub.lms.dao.CustomerDao;
 import sub.lms.servlet.BoardAddServlet;
 import sub.lms.servlet.BoardDeleteServlet;
 import sub.lms.servlet.BoardDetailServlet;
@@ -62,9 +62,9 @@ public class ServerApp {
 
     notifyApplicationInitialized();
 
-    BoardJsonFileDao boardDao = (BoardJsonFileDao) context.get("boardDao");
-    CustomerJsonFileDao customerDao = (CustomerJsonFileDao) context.get("customerDao");
-    CarinforJsonFileDao carinforDao = (CarinforJsonFileDao) context.get("carinforDao");
+    BoardDao boardDao = (BoardDao) context.get("boardDao");
+    CustomerDao customerDao = (CustomerDao) context.get("customerDao");
+    CarinforDao carinforDao = (CarinforDao) context.get("carinforDao");
 
     servletMap.put("/board/list", new BoardListServlet(boardDao));
     servletMap.put("/board/add", new BoardAddServlet(boardDao));
@@ -75,12 +75,12 @@ public class ServerApp {
     servletMap.put("/carinfor/list", new CarinforListServlet(carinforDao));
     servletMap.put("/carinfor/add", new CarinforAddServlet(carinforDao));
     servletMap.put("/carinfor/detail", new CarinforDetailServlet(carinforDao));
-    servletMap.put("/carinfor/updata", new CarinforUpdateServlet(carinforDao));
+    servletMap.put("/carinfor/update", new CarinforUpdateServlet(carinforDao));
     servletMap.put("/carinfor/delete", new CarinforDeleteServlet(carinforDao));
 
     servletMap.put("/customer/list", new CustomerListServlet(customerDao));
     servletMap.put("/customer/add", new CustomerAddServlet(customerDao));
-    servletMap.put("/customer/detaile", new CustomerDetailServlet(customerDao));
+    servletMap.put("/customer/detail", new CustomerDetailServlet(customerDao));
     servletMap.put("/customer/update", new CustomerUpdateServlet(customerDao));
     servletMap.put("/customer/delete", new CustomerDeleteServlet(customerDao));
 
@@ -139,7 +139,7 @@ public class ServerApp {
             out.writeUTF("FAIL");
             out.writeUTF(e.getMessage());
 
-            System.out.println("클라이언트 요청 처리 중 오류 발생");
+            System.out.println("클라이언트 요청 처리 중 오류 발생:");
             e.printStackTrace();
           }
         } else {

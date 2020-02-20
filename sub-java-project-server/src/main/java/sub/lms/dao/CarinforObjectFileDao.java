@@ -3,12 +3,13 @@ package sub.lms.dao;
 import java.util.List;
 import sub.lms.domain.Carinfor;
 
-public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> {
+public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> implements CarinforDao {
 
   public CarinforObjectFileDao(String filename) {
     super(filename);
   }
 
+  @Override
   public int insert(Carinfor carinfor) throws Exception {
 
     if (indexOf(carinfor.getNo()) > -1) {
@@ -19,10 +20,12 @@ public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> {
     return 1;
   }
 
+  @Override
   public List<Carinfor> findAll() throws Exception {
     return list;
   }
 
+  @Override
   public Carinfor findByNo(int no) throws Exception {
     int index = indexOf(no);
     if (index == -1) {
@@ -31,6 +34,7 @@ public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> {
     return list.get(index);
   }
 
+  @Override
   public int update(Carinfor carinfor) throws Exception {
     int index = indexOf(carinfor.getNo());
 
@@ -43,6 +47,7 @@ public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> {
     return 1;
   }
 
+  @Override
   public int delete(int no) throws Exception {
     int index = indexOf(no);
     if (index == -1) {

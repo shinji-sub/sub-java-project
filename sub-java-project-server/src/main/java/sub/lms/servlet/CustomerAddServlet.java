@@ -2,14 +2,14 @@ package sub.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import sub.lms.dao.json.CustomerJsonFileDao;
+import sub.lms.dao.CustomerDao;
 import sub.lms.domain.Customer;
 
 public class CustomerAddServlet implements Servlet {
 
-  CustomerJsonFileDao customerDao;
+  CustomerDao customerDao;
 
-  public CustomerAddServlet(CustomerJsonFileDao customerDao) {
+  public CustomerAddServlet(CustomerDao customerDao) {
     this.customerDao = customerDao;
   }
 

@@ -2,14 +2,14 @@ package sub.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import sub.lms.dao.json.CarinforJsonFileDao;
+import sub.lms.dao.CarinforDao;
 import sub.lms.domain.Carinfor;
 
 public class CarinforUpdateServlet implements Servlet {
 
-  CarinforJsonFileDao carinforDao;
+  CarinforDao carinforDao;
 
-  public CarinforUpdateServlet(CarinforJsonFileDao carinforDao) {
+  public CarinforUpdateServlet(CarinforDao carinforDao) {
     this.carinforDao = carinforDao;
   }
 
@@ -19,8 +19,8 @@ public class CarinforUpdateServlet implements Servlet {
 
 
     if (carinforDao.update(carinfor) > 0) {
-
       out.writeUTF("OK");
+
     } else {
       out.writeUTF("FAIL");
       out.writeUTF("해당 번호의 차량정보가 없습니다.");

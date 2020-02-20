@@ -2,14 +2,14 @@ package sub.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import sub.lms.dao.json.BoardJsonFileDao;
+import sub.lms.dao.BoardDao;
 import sub.lms.domain.Board;
 
 public class BoardDetailServlet implements Servlet {
 
-  BoardJsonFileDao boardDao;
+  BoardDao boardDao;
 
-  public BoardDetailServlet(BoardJsonFileDao boardDao) {
+  public BoardDetailServlet(BoardDao boardDao) {
     this.boardDao = boardDao;
   }
 
