@@ -75,12 +75,12 @@ public class ServerApp {
     servletMap.put("/carinfor/list", new CarinforListServlet(carinforDao));
     servletMap.put("/carinfor/add", new CarinforAddServlet(carinforDao));
     servletMap.put("/carinfor/detail", new CarinforDetailServlet(carinforDao));
-    servletMap.put("/carinfor/updata", new CarinforUpdateServlet(carinforDao));
+    servletMap.put("/carinfor/update", new CarinforUpdateServlet(carinforDao));
     servletMap.put("/carinfor/delete", new CarinforDeleteServlet(carinforDao));
 
     servletMap.put("/customer/list", new CustomerListServlet(customerDao));
     servletMap.put("/customer/add", new CustomerAddServlet(customerDao));
-    servletMap.put("/customer/detaile", new CustomerDetailServlet(customerDao));
+    servletMap.put("/customer/detail", new CustomerDetailServlet(customerDao));
     servletMap.put("/customer/update", new CustomerUpdateServlet(customerDao));
     servletMap.put("/customer/delete", new CustomerDeleteServlet(customerDao));
 
