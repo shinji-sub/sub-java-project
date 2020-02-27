@@ -28,6 +28,7 @@ public class CarinforAddCommand implements Command {
     carinfor.setDeparture(prompt.inputDate("차량 출차 날짜? "));
 
     try {
+      carinforDao.insert(carinfor);
       System.out.println("저장하였습니다.");
     } catch (Exception e) {
       System.out.println("저장 실패!");

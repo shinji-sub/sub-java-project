@@ -14,6 +14,7 @@ import java.util.Scanner;
 import sub.lms.dao.proxy.BoardDaoProxy;
 import sub.lms.dao.proxy.CarinforDaoProxy;
 import sub.lms.dao.proxy.CustomerDaoProxy;
+import sub.lms.dao.proxy.DaoProxyHelper;
 import sub.lms.handler.BoardAddCommand;
 import sub.lms.handler.BoardDeleteCommand;
 import sub.lms.handler.BoardDetailCommand;
@@ -43,13 +44,9 @@ public class ClientApp {
   String host;
   int port;
 
+  HashMap<String, Command> commandMap = new HashMap<>();
+
   public ClientApp() {
-
-    commandStack = new ArrayDeque<>();
-    commandQueue = new LinkedList<>();
-  }
-
-  public void service() {
 
     try {
       host = prompt.inputString("서버? ");
@@ -59,8 +56,53 @@ public class ClientApp {
       System.out.println("서버 주소 또는 포트 번호가 유효하지 않습니다!");
       keyboard.close();
       return;
-
     }
+    DaoProxyHelper daoProxyHelper = new DaoProxyHelper(host, port);
+
+    commandStack = new ArrayDeque<>();
+    commandQueue = new LinkedList<>();
+
+    BoardDaoProxy boardDao = new BoardDaoProxy(daoProxyHelper);
+    CustomerDaoProxy customerDao = new CustomerDaoProxy(daoProxyHelper);
+    CarinforDaoProxy carinforDao = new CarinforDaoProxy(daoProxyHelper);
+
+    commandMap.put("/board/list", new BoardListCommand(boardDao));
+    commandMap.put("/board/add", new BoardAddCommand(boardDao, prompt));
+    commandMap.put("/board/detail", new BoardDetailCommand(boardDao, prompt));
+    commandMap.put("/board/update", new BoardUpdateCommand(boardDao, prompt));
+    commandMap.put("/board/delete", new BoardDeleteCommand(boardDao, prompt));
+
+    commandMap.put("/customer/list", new CustomerListCommand(customerDao));
+    commandMap.put("/customer/add", new CustomerAddCommand(customerDao, prompt));
+    commandMap.put("/customer/detail", new CustomerDetailCommand(customerDao, prompt));
+    commandMap.put("/customer/update", new CustomerUpdateCommand(customerDao, prompt));
+    commandMap.put("/customer/delete", new CustomerDeleteCommand(customerDao, prompt));
+
+    commandMap.put("/carinfor/list", new CarinforListCommand(carinforDao));
+    commandMap.put("/carinfor/add", new CarinforAddCommand(carinforDao, prompt));
+    commandMap.put("/carinfor/detail", new CarinforDetailCommand(carinforDao, prompt));
+    commandMap.put("/carinfor/update", new CarinforUpdateCommand(carinforDao, prompt));
+    commandMap.put("/carinfor/delete", new CarinforDeleteCommand(carinforDao, prompt));
+
+    commandMap.put("/server/stop", () -> {
+      try {
+        try (Socket socket = new Socket(host, port);
+            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
+
+          out.writeUTF("/server/stop");
+          out.flush();
+          System.out.println("서버: " + in.readUTF());
+          System.out.println("안녕!");
+        }
+      } catch (Exception e) {
+
+      }
+    });
+  }
+
+  public void service() {
+
     while (true) {
       String command;
       command = prompt.inputString("\n명령> ");
@@ -79,68 +121,20 @@ public class ClientApp {
       }
 
       commandStack.push(command);
-
       commandQueue.offer(command);
 
       processCommand(command);
     }
-
     keyboard.close();
   }
 
   private void processCommand(String command) {
-    try (Socket socket = new Socket(host, port);
-        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-        ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
-
-      System.out.println("서버와 연결이 되었음!");
-
-      BoardDaoProxy boardDao = new BoardDaoProxy(in, out);
-      CustomerDaoProxy customerDao = new CustomerDaoProxy(in, out);
-      CarinforDaoProxy carinforDao = new CarinforDaoProxy(in, out);
-
-      HashMap<String, Command> commandMap = new HashMap<>();
-      commandMap.put("/board/list", new BoardListCommand(boardDao));
-      commandMap.put("/board/add", new BoardAddCommand(boardDao, prompt));
-      commandMap.put("/board/detail", new BoardDetailCommand(boardDao, prompt));
-      commandMap.put("/board/update", new BoardUpdateCommand(boardDao, prompt));
-      commandMap.put("/board/delete", new BoardDeleteCommand(boardDao, prompt));
-
-      commandMap.put("/customer/list", new CustomerListCommand(customerDao));
-      commandMap.put("/customer/add", new CustomerAddCommand(customerDao, prompt));
-      commandMap.put("/customer/detail", new CustomerDetailCommand(customerDao, prompt));
-      commandMap.put("/customer/update", new CustomerUpdateCommand(customerDao, prompt));
-      commandMap.put("/customer/delete", new CustomerDeleteCommand(customerDao, prompt));
-
-      commandMap.put("/carinfor/list", new CarinforListCommand(carinforDao));
-      commandMap.put("/carinfor/add", new CarinforAddCommand(carinforDao, prompt));
-      commandMap.put("/carinfor/detail", new CarinforDetailCommand(carinforDao, prompt));
-      commandMap.put("/carinfor/update", new CarinforUpdateCommand(carinforDao, prompt));
-      commandMap.put("/carinfor/delete", new CarinforDeleteCommand(carinforDao, prompt));
-
-      commandMap.put("/server/stop", () -> {
-        try {
-          out.writeUTF(command);
-          out.flush();
-          System.out.println("서버: " + in.readUTF());
-          System.out.println("안녕!");
-        } catch (Exception e) {
-
-        }
-      });
-
-      Command commandHandler = commandMap.get(command);
-      if (commandHandler == null) {
-        System.out.println("실행할 수 없는 명령입니다.");
-        return;
-      }
-      commandHandler.execute();
-
-    } catch (Exception e) {
-      System.out.printf("명령어 실행 중 오류 발생: %s\n", e.getMessage());
-      e.printStackTrace();
+    Command commandHandler = commandMap.get(command);
+    if (commandHandler == null) {
+      System.out.println("실행할 수 없는 명령입니다.");
+      return;
     }
-    System.out.println("서버와 연결을 끊었음!");
+    commandHandler.execute();
   }
 
   private void printCommandHistory(Iterator<String> iterator) {
@@ -157,6 +151,7 @@ public class ClientApp {
       }
     }
   }
+
 
   public static void main(String[] args) throws Exception {
     System.out.println("주차장 관리 시스템입니다.");

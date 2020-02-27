@@ -9,7 +9,7 @@
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/ServerApp.java 변경
+- src/main/java/sub/lms/ServerApp.java 변경
 
 ## 실습
 

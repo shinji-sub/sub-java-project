@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import sub.lms.context.ApplicationContextListener;
 import sub.lms.dao.BoardDao;
 import sub.lms.dao.CarinforDao;
@@ -36,6 +38,8 @@ public class ServerApp {
   Map<String, Object> context = new HashMap<>();
 
   Map<String, Servlet> servletMap = new HashMap<>();
+
+  ExecutorService executoerService = Executors.newCachedThreadPool();
 
 
   public void addApplicationContextListener(ApplicationContextListener listener) {
@@ -92,11 +96,10 @@ public class ServerApp {
         Socket socket = serverSocket.accept();
         System.out.println("클라이언트와 연결되었음!");
 
-        if (processRequest(socket) == 9) {
-          break;
-        }
-
-        System.out.println("--------------------------------------");
+        executoerService.submit(() -> {
+          processRequest(socket);
+          System.out.println("--------------------------------------");
+        });
       }
 
     } catch (Exception e) {
@@ -104,7 +107,7 @@ public class ServerApp {
     }
 
     notifyApplicationDestroyed();
-
+    executoerService.shutdown();
   }
 
   int processRequest(Socket clientSocket) {

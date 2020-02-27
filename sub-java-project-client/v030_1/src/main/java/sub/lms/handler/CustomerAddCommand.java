@@ -31,6 +31,7 @@ public class CustomerAddCommand implements Command {
     customer.setExitStatus(prompt.inputString("입·출차 상태?: "));
     customer.setAcceptance(prompt.inputString("수납 구분?: "));
     try {
+      customerDao.insert(customer);
       System.out.println("저장하였습니다.");
     } catch (Exception e) {
       System.out.println("저장 실패!");
