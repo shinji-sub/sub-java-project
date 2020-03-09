@@ -1,8 +1,10 @@
 package sub.lms.servlet;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.PrintStream;
+import java.util.List;
+import java.util.Scanner;
 import sub.lms.dao.CarinforDao;
+import sub.lms.domain.Carinfor;
 
 public class CarinforListServlet implements Servlet {
 
@@ -13,10 +15,11 @@ public class CarinforListServlet implements Servlet {
   }
 
   @Override
-  public void service(ObjectInputStream In, ObjectOutputStream out) throws Exception {
-    out.writeUTF("OK");
-    out.reset();
-    out.writeObject(carinforDao.findAll());
+  public void service(Scanner in, PrintStream out) throws Exception {
+    List<Carinfor> carinfor = carinforDao.findAll();
+    for (Carinfor c : carinfor) {
+      out.printf("%d, %s, %s, %s, %s, %s, %s\n", c.getNo(),c.getCarType(), c.getCarNumber(), c.getParking(), c.getDatas(), c.getDeparture(),c.getDeparture());
+    }
   }
 }
 

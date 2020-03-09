@@ -1,7 +1,8 @@
 package sub.lms.servlet;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.PrintStream;
+import java.sql.Date;
+import java.util.Scanner;
 import sub.lms.dao.CarinforDao;
 import sub.lms.domain.Carinfor;
 
@@ -14,16 +15,39 @@ public class CarinforAddServlet implements Servlet {
   }
 
   @Override
-  public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-    Carinfor carinfor = (Carinfor) in.readObject();
+  public void service(Scanner in, PrintStream out) throws Exception {
+    Carinfor carinfor = new Carinfor();
 
+    out.println("차종? ");
+    out.println("!{}!");
+    out.flush();
+    carinfor.setCarType(in.nextLine());
+
+    out.println("차량번호? ");
+    out.println("!{}!");
+    out.flush();
+    carinfor.setCarNumber(in.nextLine());
+
+    out.println("주차 위치? ");
+    out.println("!{}!");
+    out.flush();
+    carinfor.setParking(in.nextLine());
+
+    out.println("차량 입차 날짜? ");
+    out.println("!{}!");
+    out.flush();
+    carinfor.setDatas(Date.valueOf(in.nextLine()));
+
+    out.println("차량 출차 날짜? ");
+    out.println("!{}!");
+    out.flush();
+    carinfor.setDeparture(Date.valueOf(in.nextLine()));
 
     if (carinforDao.insert(carinfor) > 0) {
-      out.writeUTF("OK");
+      out.println("주차장 정보를 저장했습니다.");
 
     } else {
-      out.writeUTF("FAIL");
-      out.writeUTF("같은 번호의 차량이 있습니다.");
+      out.println("저장에 실패했습니다.");
     }
   }
 }

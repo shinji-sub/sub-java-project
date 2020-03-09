@@ -6,18 +6,23 @@ import java.util.Scanner;
 import sub.lms.dao.CustomerDao;
 import sub.lms.domain.Customer;
 
-public class CustomerListServlet implements Servlet {
+public class CustomerSearchServlet implements Servlet{
 
   CustomerDao customerDao;
 
-  public CustomerListServlet(CustomerDao customerDao) {
+  public CustomerSearchServlet(CustomerDao customerDao) {
     this.customerDao = customerDao;
   }
-
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-    List<Customer> customer = customerDao.findAll();
-    for(Customer c : customer ) {
+    out.println("검색어? ");
+    out.println("!{}!");
+    out.flush();
+
+    String keyword = in.nextLine();
+
+    List<Customer> customers = customerDao.findByKeyword(keyword);
+    for (Customer c : customers) {
       out.printf(
           "%d, %s, %s, %s, %s, %s, %s, %s, %s, %s\n",
           c.getNo(), c.getCartype(), c.getCarNumbel(), c.getPhoto(), c.getDiscountRatr(),
@@ -26,3 +31,5 @@ public class CustomerListServlet implements Servlet {
     }
   }
 }
+
+

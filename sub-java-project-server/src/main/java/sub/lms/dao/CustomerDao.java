@@ -14,4 +14,8 @@ public interface CustomerDao {
   public int update(Customer customer) throws Exception;
 
   public int delete(int no) throws Exception;
+
+  default List<Customer> findByKeyword(String keyword) throws Exception {
+    return null;
+  }
 }
