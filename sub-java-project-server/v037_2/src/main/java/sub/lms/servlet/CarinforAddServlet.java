@@ -6,31 +6,17 @@ import java.util.Scanner;
 import sub.lms.dao.CarinforDao;
 import sub.lms.domain.Carinfor;
 
-public class CarinforUpdateServlet implements Servlet {
+public class CarinforAddServlet implements Servlet {
 
   CarinforDao carinforDao;
 
-  public CarinforUpdateServlet(CarinforDao carinforDao) {
+  public CarinforAddServlet(CarinforDao carinforDao) {
     this.carinforDao = carinforDao;
   }
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-    out.println("번호? ");
-    out.println("!{}!");
-    out.flush();
-    int no = Integer.parseInt(in.nextLine());
-
-    Carinfor old = CarinforDao.findByNo(no);
-
-    if (old == null) {
-      out.println("해당 번호의 주차차량 정보가 없습니다.");
-      return;
-    }
-
     Carinfor carinfor = new Carinfor();
-
-    carinfor.setNo(no);
 
     out.println("차종? ");
     out.println("!{}!");
@@ -57,11 +43,11 @@ public class CarinforUpdateServlet implements Servlet {
     out.flush();
     carinfor.setDeparture(Date.valueOf(in.nextLine()));
 
-    if (carinforDao.update(carinfor) > 0) {
-      out.println("주차차량 정보를 변경했습니다.");
+    if (carinforDao.insert(carinfor) > 0) {
+      out.println("주차장 정보를 저장했습니다.");
+
     } else {
-      out.println("변경에 실패했습니다.");
+      out.println("저장에 실패했습니다.");
     }
   }
 }
-

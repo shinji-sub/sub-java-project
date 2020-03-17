@@ -1,31 +1,34 @@
-package sub.lms.dao;
+package sub.lms.dao.json;
 
 import java.util.List;
-import sub.lms.domain.Carinfor;
+import sub.lms.dao.BoardDao;
+import sub.lms.domain.Board;
 
-public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> implements CarinforDao {
+public class BoardJsonFileDao extends AbstractJsonFileDao<Board> implements BoardDao {
 
-  public CarinforObjectFileDao(String filename) {
+  public BoardJsonFileDao(String filename) {
     super(filename);
   }
 
   @Override
-  public int insert(Carinfor carinfor) throws Exception {
+  public int insert(Board board) throws Exception {
 
-    if (indexOf(carinfor.getNo()) > -1) {
+    if (indexOf(board.getNo()) > -1) {
       return 0;
     }
-    list.add(carinfor);
+
+    list.add(board);
     saveData();
     return 1;
   }
 
   @Override
-  public List<Carinfor> findAll() throws Exception {
+  public List<Board> findAll() throws Exception {
     return list;
   }
 
-  public Carinfor findByNo(int no) throws Exception {
+  @Override
+  public Board findByNo(int no) throws Exception {
     int index = indexOf(no);
     if (index == -1) {
       return null;
@@ -34,14 +37,14 @@ public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> imple
   }
 
   @Override
-  public int update(Carinfor carinfor) throws Exception {
-    int index = indexOf(carinfor.getNo());
+  public int update(Board board) throws Exception {
+    int index = indexOf(board.getNo());
 
     if (index == -1) {
       return 0;
     }
 
-    list.set(index, carinfor);
+    list.set(index, board);
     saveData();
     return 1;
   }

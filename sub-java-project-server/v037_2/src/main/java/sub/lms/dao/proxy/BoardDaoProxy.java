@@ -3,23 +3,23 @@ package sub.lms.dao.proxy;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
-import sub.lms.dao.CarinforDao;
-import sub.lms.domain.Carinfor;
+import sub.lms.dao.BoardDao;
+import sub.lms.domain.Board;
 
-public class CarinforDaoProxy implements CarinforDao {
+public class BoardDaoProxy implements BoardDao {
 
   ObjectInputStream in;
   ObjectOutputStream out;
 
-  public CarinforDaoProxy(ObjectInputStream in, ObjectOutputStream out) {
+  public BoardDaoProxy(ObjectInputStream in, ObjectOutputStream out) {
     this.in = in;
     this.out = out;
   }
 
   @Override
-  public int insert(Carinfor carinfor) throws Exception {
-    out.writeUTF("/carinfor/add");
-    out.writeObject(carinfor);
+  public int insert(Board board) throws Exception {
+    out.writeUTF("/board/add");
+    out.writeObject(board);
     out.flush();
 
     String response = in.readUTF();
@@ -31,33 +31,33 @@ public class CarinforDaoProxy implements CarinforDao {
 
   @SuppressWarnings("unchecked")
   @Override
-  public List<Carinfor> findAll() throws Exception {
-    out.writeUTF("/carinfor/list");
+  public List<Board> findAll() throws Exception {
+    out.writeUTF("/board/list");
     out.flush();
 
-    String response = in.readUTF();
-    if (response.equals("FAIL")) {
+    String respinse = in.readUTF();
+    if (respinse.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-    return (List<Carinfor>) in.readObject();
-  }
-
-  public Carinfor findByNo(int no) throws Exception {
-    out.writeUTF("/carinfor/detail");
-    out.writeInt(no);
-    out.flush();
-
-    String response = in.readUTF();
-    if (response.equals("FAIL")) {
-      throw new Exception(in.readUTF());
-    }
-    return (Carinfor) in.readObject();
+    return (List<Board>) in.readObject();
   }
 
   @Override
-  public int update(Carinfor carinfor) throws Exception {
-    out.writeUTF("/carinfor/update");
-    out.writeObject(carinfor);
+  public Board findByNo(int no) throws Exception {
+    out.writeUTF("/board/detail");
+    out.flush();
+
+    String response = in.readUTF();
+    if (response.equals("FAIL")) {
+      throw new Exception(in.readUTF());
+    }
+    return (Board) in.readObject();
+  }
+
+  @Override
+  public int update(Board board) throws Exception {
+    out.writeUTF("/board/updata");
+    out.writeObject(board);
     out.flush();
 
     String response = in.readUTF();
@@ -69,12 +69,13 @@ public class CarinforDaoProxy implements CarinforDao {
 
   @Override
   public int delete(int no) throws Exception {
-    out.writeUTF("/carinfor/delete");
+    out.writeUTF("/board/delete");
     out.writeInt(no);
     out.flush();
 
-    String response = in.readUTF();
-    if (response.equals("FAIL")) {
+    String respinse = in.readUTF();
+
+    if (respinse.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
     return 1;

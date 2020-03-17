@@ -1,31 +1,32 @@
 package sub.lms.dao;
 
 import java.util.List;
-import sub.lms.domain.Carinfor;
+import sub.lms.domain.Customer;
 
-public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> implements CarinforDao {
+public class CustomerObjectFileDao extends AbstractObjectFileDao<Customer> implements CustomerDao {
 
-  public CarinforObjectFileDao(String filename) {
+  public CustomerObjectFileDao(String filename) {
     super(filename);
   }
 
   @Override
-  public int insert(Carinfor carinfor) throws Exception {
+  public int insert(Customer customer) throws Exception {
 
-    if (indexOf(carinfor.getNo()) > -1) {
+    if (indexOf(customer.getNo()) > -1) {
       return 0;
     }
-    list.add(carinfor);
+    list.add(customer);
     saveData();
     return 1;
   }
 
   @Override
-  public List<Carinfor> findAll() throws Exception {
+  public List<Customer> findAll() throws Exception {
     return list;
   }
 
-  public Carinfor findByNo(int no) throws Exception {
+  @Override
+  public Customer findByNo(int no) throws Exception {
     int index = indexOf(no);
     if (index == -1) {
       return null;
@@ -34,14 +35,14 @@ public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> imple
   }
 
   @Override
-  public int update(Carinfor carinfor) throws Exception {
-    int index = indexOf(carinfor.getNo());
+  public int update(Customer customer) throws Exception {
+    int index = indexOf(customer.getNo());
 
     if (index == -1) {
       return 0;
     }
 
-    list.set(index, carinfor);
+    list.set(index, customer);
     saveData();
     return 1;
   }
@@ -66,4 +67,5 @@ public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> imple
     }
     return -1;
   }
+
 }
