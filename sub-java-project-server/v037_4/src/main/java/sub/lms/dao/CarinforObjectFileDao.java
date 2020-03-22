@@ -1,24 +1,21 @@
-package sub.lms.dao.json;
+package sub.lms.dao;
 
 import java.util.List;
-import sub.lms.dao.CarinforDao;
 import sub.lms.domain.Carinfor;
 
-public class CarinforJsonFileDao extends AbstractJsonFileDao<Carinfor> implements CarinforDao {
+public class CarinforObjectFileDao extends AbstractObjectFileDao<Carinfor> implements CarinforDao {
 
-  public CarinforJsonFileDao(String filename) {
+  public CarinforObjectFileDao(String filename) {
     super(filename);
   }
 
-  // 서블릿 객체들이 데이터를 다룰 때 사용할 메서드를 정의한다.
   @Override
   public int insert(Carinfor carinfor) throws Exception {
 
-    if (indexOf(carinfor.getNo()) > -1) { // 같은 번호의 수업이 있다면,
+    if (indexOf(carinfor.getNo()) > -1) {
       return 0;
     }
-
-    list.add(carinfor); // 새 수업을 등록한다.
+    list.add(carinfor);
     saveData();
     return 1;
   }
@@ -44,7 +41,7 @@ public class CarinforJsonFileDao extends AbstractJsonFileDao<Carinfor> implement
       return 0;
     }
 
-    list.set(index, carinfor); // 기존 객체를 파라미터로 받은 객체로 바꾼다.
+    list.set(index, carinfor);
     saveData();
     return 1;
   }
@@ -55,7 +52,6 @@ public class CarinforJsonFileDao extends AbstractJsonFileDao<Carinfor> implement
     if (index == -1) {
       return 0;
     }
-
     list.remove(index);
     saveData();
     return 1;
@@ -71,4 +67,3 @@ public class CarinforJsonFileDao extends AbstractJsonFileDao<Carinfor> implement
     return -1;
   }
 }
-
